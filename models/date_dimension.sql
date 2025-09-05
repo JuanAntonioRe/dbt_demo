@@ -8,8 +8,8 @@ WITH cte AS(
         
         {{get_season('started_at')}} AS STATION_OF_YEAR 
 
-    FROM {{ source('demo', 'bike') }}
-    WHERE started_at != 'started_at'
+    FROM {{ ref('stage_bike') }}
+    WHERE started_at != 'started_at' AND started_at != '"started_at"'
 )
 
 SELECT *
